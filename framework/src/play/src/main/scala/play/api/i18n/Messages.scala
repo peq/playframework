@@ -457,7 +457,7 @@ class DefaultMessagesApi @Inject() (
 
   override def setLang(result: Result, lang: Lang): Result = {
     result.withCookies(Cookie(langCookieName, lang.code,
-      path = httpConfiguration.session.path,
+      path = httpConfiguration.context,
       domain = httpConfiguration.session.domain,
       secure = langCookieSecure,
       httpOnly = langCookieHttpOnly))
@@ -466,7 +466,7 @@ class DefaultMessagesApi @Inject() (
   override def clearLang(result: Result): Result = {
     result.discardingCookies(DiscardingCookie(
       langCookieName,
-      path = httpConfiguration.session.path,
+      path = httpConfiguration.context,
       domain = httpConfiguration.session.domain,
       secure = langCookieSecure))
   }
